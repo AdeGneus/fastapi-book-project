@@ -1,0 +1,24 @@
+name: Deploy API
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+
+      - name: Deploy to EC2
+        run: |
+          ssh -o StrictHostKeyChecking=no -i ~/.ssh/fast-api_book.pem ubuntu@16.171.42.11 << 'EOF'
+            cd /home/ubuntu/fastapi-book-project
+            git pull origin main
+            source venv/bin/activate
+            pip install -r requirements.txt
+            systemctl restart fastapi
+          EOF
