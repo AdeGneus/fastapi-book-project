@@ -15,7 +15,7 @@ integration_json = {
             "app_description": "Forwards Telex CI/CD notifications to Slack",
             "app_logo": "http://ec2-13-60-216-247.eu-north-1.compute.amazonaws.com",
             "app_url": "http://ec2-13-60-216-247.eu-north-1.compute.amazonaws.com",
-            "background_color": "#fff"
+            "background_color": "#ccc"
         },
         "is_active": True,
         "integration_type": "modifier",
