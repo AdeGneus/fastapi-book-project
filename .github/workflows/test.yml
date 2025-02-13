@@ -32,4 +32,19 @@ jobs:
       - name: Notify Telex of Test Success
         if: success()
         run: |
-          curl -X POST -H "Content-Type: application/json" -d '{"content": "✅ Tests passed successfully for PR ${{ github.event.pull_request.number }}."}' ${{ secrets.TELEX_WEBHOOK }}
+          curl -X POST -H "Content-Type: application/json" -d '{
+          "event_name": "ci_pipeline",
+          "username": "GitHub Actions",
+          "status": "success",
+          "message": "✅ Tests passed successfully for PR ${{ github.event.pull_request.number }}."
+          }' ${{ secrets.TELEX_WEBHOOK }}
+
+      - name: Notify Telex of Test Failure
+        if: failure()
+        run: |
+          curl -X POST -H "Content-Type: application/json" -d '{
+            "event_name": "ci_pipeline",
+            "username": "GitHub Actions",
+            "status": "failure",
+            "message": "❌ Tests failed for PR ${{ github.event.pull_request.number }}."
+          }' ${{ secrets.TELEX_WEBHOOK }}
