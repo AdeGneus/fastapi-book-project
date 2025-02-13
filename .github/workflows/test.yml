@@ -28,3 +28,8 @@ jobs:
         run: |
           source venv/bin/activate
           pytest
+
+      - name: Notify Telex of Test Success
+        if: success()
+        run: |
+          curl -X POST -H "Content-Type: application/json" -d '{"content": "✅ Tests passed successfully for PR ${{ github.event.pull_request.number }}."}' ${{ secrets.TELEX_WEBHOOK }}
