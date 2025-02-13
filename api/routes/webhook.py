@@ -19,9 +19,15 @@ async def telex_to_slack(request: Request):
         message = payload.get("message", "No message provided.")
 
         slack_webhook_url = settings.SLACK_WEBHOOK_URL
+        
+        event_mapping = {
+            "ci_pipeline": "🛠️ CI Pipeline",
+            "cd_pipeline": "🚀 CD Pipeline"
+        }
+        event_display = event_mapping.get(event_name, event_name)
 
         slack_message = {
-            "text": f"*{event_name}* - {status.upper()} 🚀\n\n_{username}_:\n>{message}"
+            "text": f"*{event_display}* - {status.upper()} 🚀\n\n_{username}_:\n>{message}"
         }
 
         async with httpx.AsyncClient() as client:

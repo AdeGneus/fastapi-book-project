@@ -49,6 +49,7 @@ integration_json = {
                 "default": "ci_pipeline",
                 "options": [
                     "ci_pipeline",
+                    "cd_pipeline",
                     "deployment",
                     "error"
                 ]
