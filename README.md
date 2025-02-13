@@ -129,6 +129,8 @@ The API includes proper error handling for:
 - Invalid genre types
 - Malformed requests
 
+## Custom Slack Notifications from Telex via Webhook
+
 ## Contributing
 
 1. Fork the repository
