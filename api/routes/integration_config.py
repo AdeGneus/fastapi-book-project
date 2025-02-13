@@ -18,7 +18,7 @@ integration_json = {
             "background_color": "#fff"
         },
         "is_active": True,
-        "integration_type": "text",
+        "integration_type": "modifier",
         "key_features": [
             "Real-time updates",
             "Slack notifications"
