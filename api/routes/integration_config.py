@@ -1,5 +1,6 @@
 from fastapi import APIRouter
 from fastapi.responses import JSONResponse
+from core.config import settings
 
 router = APIRouter()
 
@@ -65,8 +66,8 @@ integration_json = {
                 "default": True
             }
         ],
-        "target_url": "https://hooks.slack.com/services/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",
-        "tick_url": "http://ec2-13-60-216-247.eu-north-1.compute.amazonaws.com/telex-webhook"
+        "target_url": settings.SLACK_WEBHOOK_URL,
+        "tick_url": settings.TICK_URL
     }
 }
 
